@@ -7,8 +7,9 @@ import os
 from PIL import Image
 import numpy as np
 import matplotlib.pyplot as plt
+import sys
 
-np.set_printoptions(threshold=np.nan)
+np.set_printoptions(threshold=sys.maxsize)
 
 class CNN1(object):
 	def __init__(self, train_img=None, train_labels=None, test_img=None, test_labels=None,b_size=None,num_epoch=None):

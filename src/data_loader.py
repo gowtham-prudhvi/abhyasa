@@ -36,7 +36,14 @@ class Data_Loader(object):
                     break
                 file_path = folder_path + "/" + file
                 img = np.asarray(Image.open(file_path).convert('L').resize((45,45), Image.ANTIALIAS)).flatten()
-                features.append(img/255.0)
+                # print(img)
+                # features.append(img/255.0)
+                img = (img/255.0).astype("float16")
+                # print(img.dtype)
+                features.append(img)
+                # print(features[0].dtype)
+                # print(features[:100])
+                # quit()
                 labels.append(folder_name)
                 count-=1
             except Exception as e:

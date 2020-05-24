@@ -25,7 +25,7 @@ class Node(object):
 		self.parent = parent
 		self.value = value
 def thinning(image_abs_path,i):
-	grayscale_img = imread(image_abs_path, as_grey=True)
+	grayscale_img = imread(image_abs_path, as_gray=True)
 	gaussian_blur = gaussian(grayscale_img, sigma=1)
 	thresh_sauvola = threshold_minimum(gaussian_blur)
 	binary_img = gaussian_blur < thresh_sauvola
@@ -70,7 +70,7 @@ thresh_color = cv2.cvtColor(thresh,cv2.COLOR_GRAY2BGR)
 # apply some dilation and erosion to join the gaps
 thresh = cv2.dilate(thresh,None,iterations = 3)
 thresh = cv2.erode(thresh,None,iterations = 2)
-_,contours,hierarchy = cv2.findContours(thresh,cv2.RETR_LIST,cv2.CHAIN_APPROX_SIMPLE)
+contours,hierarchy = cv2.findContours(thresh,cv2.RETR_LIST,cv2.CHAIN_APPROX_SIMPLE)
 contours = sorted(contours, key=lambda cont: cv2.boundingRect(cont)[0])
 
 X_cord = []
